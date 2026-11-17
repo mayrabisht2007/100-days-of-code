@@ -1,0 +1,42 @@
+//Q66: Insert an element in a sorted array at the appropriate position.
+
+/*
+Sample Test Cases:
+Input 1:
+5
+1 2 4 5 6
+3
+Output 1:
+1 2 3 4 5 6
+
+*/
+#include <stdio.h>
+
+int main() {
+    int n, key, inserted = 0;
+    
+    scanf("%d", &n);
+    int arr[n];
+    
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+    
+    scanf("%d", &key);
+    
+    // Loop through the array and print the key right before the first larger element
+    for (int i = 0; i < n; i++) {
+        if (!inserted && arr[i] >= key) {
+            printf("%d ", key);
+            inserted = 1;
+        }
+        printf("%d ", arr[i]);
+    }
+    
+    // If the key is larger than all elements, print it at the very end
+    if (!inserted) {
+        printf("%d ", key);
+    }
+    
+    return 0;
+}
