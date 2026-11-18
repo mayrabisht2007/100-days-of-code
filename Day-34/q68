@@ -1,0 +1,45 @@
+//Q68: Delete an element from an array.
+
+/*
+Sample Test Cases:
+Input 1:
+5
+1 2 3 4 5
+2
+Output 1:
+1 2 4 5
+
+*/
+#include <stdio.h>
+
+int main() {
+    int n, pos;
+    
+    // Read array size
+    if (scanf("%d", &n) != 1) return 1;
+    
+    int arr[n];
+    
+    // Read array elements
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+    
+    // Read the 0-based index to delete
+    scanf("%d", &pos);
+    
+    // Validate index and shift elements left
+    if (pos >= 0 && pos < n) {
+        for (int i = pos; i < n - 1; i++) {
+            arr[i] = arr[i + 1];
+        }
+        n--; // Reduce logical array size
+    }
+    
+    // Print updated array
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    
+    return 0;
+}
