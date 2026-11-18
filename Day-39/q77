@@ -1,0 +1,62 @@
+//Q77: Check if the elements on the diagonal of a matrix are distinct.
+
+/*
+Sample Test Cases:
+Input 1:
+3 3
+1 2 3
+4 5 6
+7 8 1
+Output 1:
+False
+
+Input 2:
+3 3
+1 2 3
+4 5 6
+7 8 9
+Output 2:
+True
+
+*/
+#include <stdio.h>
+
+int main() {
+    int rows, cols;
+    int matrix[100][100]; // A large enough fixed-size matrix for beginners
+
+    // Read the number of rows and columns
+    scanf("%d %d", &rows, &cols);
+
+    // Read all the numbers into the matrix
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+
+    //  Assume all diagonal elements are unique at the start
+    // (1 means Yes, 0 means No)
+    int is_distinct = 1;
+
+    // Compare each diagonal element with the rest of the diagonal
+    for (int i = 0; i < rows && i < cols; i++) {
+        for (int j = i + 1; j < rows && j < cols; j++) {
+            
+            // If two diagonal elements match, they are not distinct
+            if (matrix[i][i] == matrix[j][j]) {
+                is_distinct = 0;
+            }
+        }
+    }
+
+    //  Print a clear message instead of True or False
+    if (is_distinct == 1) {
+        printf("All diagonal elements are distinct.\n");
+    } else {
+        printf("Diagonal elements are not distinct.\n");
+    }
+
+    return 0;
+}
+
