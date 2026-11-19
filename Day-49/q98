@@ -1,0 +1,56 @@
+//Q98: Print initials of a name with the surname displayed in full.
+
+/*
+Sample Test Cases:
+Input 1:
+John David Doe
+Output 1:
+J.D. Doe
+
+*/
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+int main() {
+    char name;
+
+    // Read the full name including spaces
+    if (fgets(name, sizeof(name), stdin) != NULL) {
+        // Remove the trailing newline character added by fgets
+        name[strcspn(name, "\n")] = '\0';
+
+        int len = strlen(name);
+        int lastSpace = -1;
+
+        // Find the index of the last space in the string
+        for (int i = 0; i < len; i++) {
+            if (name[i] == ' ') {
+                lastSpace = i;
+            }
+        }
+
+        // If there are multiple words (at least one space exists)
+        if (lastSpace != -1) {
+            // Print the first initial
+            if (name != ' ') {
+                printf("%c.", toupper(name));
+            }
+
+            // Print initials for any middle names before the last space
+            for (int i = 1; i < lastSpace; i++) {
+                if (name[i - 1] == ' ' && name[i] != ' ') {
+                    printf("%c.", toupper(name[i]));
+                }
+            }
+
+            // Print the space and the full surname
+            printf(" %s\n", &name[lastSpace + 1]);
+        } else {
+            // If only a single word is entered, print it as is
+            printf("%s\n", name);
+        }
+    }
+
+    return 0;
+}
