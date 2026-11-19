@@ -1,0 +1,33 @@
+//Q99: Change the date format from dd/04/yyyy to dd-Apr-yyyy.
+
+/*
+Sample Test Cases:
+Input 1:
+15/04/2025
+Output 1:
+15-Apr-2025
+
+*/
+#include <stdio.h>
+
+int main() {
+    int day, month, year;
+    
+    // Array of month abbreviations (index 1 to 12)
+    const char *months[] = {
+        "", "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    };
+
+    // Read the date in dd/mm/yyyy format
+    if (scanf("%d/%d/%d", &day, &month, &year) == 3) {
+        if (month >= 1 && month <= 12) {
+            // Print day with leading zero if needed, month name, and year
+            printf("%02d-%s-%04d\n", day, months[month], year);
+        } else {
+            printf("Invalid month\n");
+        }
+    }
+
+    return 0;
+}
