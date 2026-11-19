@@ -1,0 +1,33 @@
+//Q88: Replace spaces with hyphens in a string.
+
+/*
+Sample Test Cases:
+Input 1:
+hello world
+Output 1:
+hello-world
+
+*/
+#include <stdio.h>
+
+int main() {
+    char str[1000];
+    
+    // Read a full line including spaces
+    if (fgets(str, sizeof(str), stdin) != NULL) {
+        int i = 0;
+        
+        // Traverse the string until the null terminator
+        while (str[i] != '\0') {
+            if (str[i] == ' ') {
+                str[i] = '-';
+            }
+            i++;
+        }
+        
+        // Print the modified string
+        printf("%s", str);
+    }
+    
+    return 0;
+}
