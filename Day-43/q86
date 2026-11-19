@@ -1,0 +1,52 @@
+//Q86: Check if a string is a palindrome.
+
+/*
+Sample Test Cases:
+Input 1:
+madam
+Output 1:
+Palindrome
+
+Input 2:
+hello
+Output 2:
+Not palindrome
+
+*/
+#include <stdio.h>
+
+int main() {
+    char str[1000];
+    
+    // Read input string
+    scanf("%s", str);
+    
+    // Manually calculate the length of the string
+    int length = 0;
+    while (str[length] != '\0') {
+        length++;
+    }
+    
+    int left = 0;
+    int right = length - 1;
+    int isPalindrome = 1; // 1 means true, 0 means false
+    
+    // Compare characters from both ends moving toward the center
+    while (left < right) {
+        if (str[left] != str[right]) {
+            isPalindrome = 0;
+            break;
+        }
+        left++;
+        right--;
+    }
+    
+    // Print the output
+    if (isPalindrome) {
+        printf("Palindrome\n");
+    } else {
+        printf("Not palindrome\n");
+    }
+    
+    return 0;
+}
