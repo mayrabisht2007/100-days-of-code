@@ -1,0 +1,36 @@
+//Q97: Print the initials of a name.
+
+/*
+Sample Test Cases:
+Input 1:
+John Doe
+Output 1:
+J.D.
+
+*/
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+
+int main() {
+    char name[100];
+
+    // Read the full name including spaces
+    if (fgets(name, sizeof(name), stdin) != NULL) {
+        // Print the first initial if the string isn't empty
+        if (name[0] != '\0' && name[0] != '\n' && name[0] != ' ') {
+            printf("%c.", toupper(name[0]));
+        }
+
+        // Loop through the rest of the string
+        for (int i = 1; name[i] != '\0'; i++) {
+            // If the current character is a letter after a space, print it
+            if (name[i - 1] == ' ' && name[i] != ' ' && name[i] != '\n') {
+                printf("%c.", toupper(name[i]));
+            }
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
