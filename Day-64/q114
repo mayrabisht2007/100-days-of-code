@@ -1,0 +1,60 @@
+//Q114: Write a program to take a string s as input. The task is to find the length of the longest substring without repeating characters. Print the length as output.
+
+/*
+Sample Test Cases:
+Input 1:
+s = "abcabcbb"
+Output 1:
+3
+
+Input 2:
+s = "bbbbb"
+Output 2:
+1
+
+Input 3:
+s = "pwwkew"
+Output 3:
+3
+
+*/
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char word[1000]; // Stores the input string
+    scanf("%s", word);
+    
+    int total_len = strlen(word); // Total number of letters in the word
+    int best_len = 0;             // Stores the longest valid length found so far
+
+    // 'start' picks each letter one by one as the beginning of a substring
+    for (int start = 0; start < total_len; start++) {
+        
+        int seen[256] = {0}; // Checklist to track which letters we already saw (0 = No, 1 = Yes)
+        int count = 0;       // Counts letters in the current substring
+
+        // 'end' moves forward from 'start' to check the next letters
+        for (int end = start; end < total_len; end++) {
+            char letter = word[end];
+
+            // If we already saw this letter, stop!
+            if (seen[letter] == 1) {
+                break;
+            }
+
+            // Mark this letter as seen and add 1 to our count
+            seen[letter] = 1;
+            count++;
+
+            // Save the new record if 'count' is bigger than 'best_len'
+            if (count > best_len) {
+                best_len = count;
+            }
+        }
+    }
+
+    printf("%d\n", best_len);
+
+    return 0;
+}
