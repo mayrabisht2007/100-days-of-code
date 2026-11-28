@@ -9,8 +9,6 @@ Name: Raj | ID: 11 | Joining Date: 12/05/2020
 
 */
 #include <stdio.h>
-
-
 struct Date {
     int day;
     int month;
